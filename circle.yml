@@ -25,3 +25,7 @@ deployment:
     branch: master
     commands:
       - sbt "set version := \"0.0.1-b${CIRCLE_BUILD_NUM}-${CIRCLE_SHA1}\"" package publish
+  release:
+    tag: /[0-9]-[0-9]-[0-9]/
+    commands:
+      - sbt "set version := \"${CIRCLE_TAG}\"" package publish
